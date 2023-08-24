@@ -11,23 +11,23 @@
     changed_when: false
     when: ansible_distribution == "CentOS"
 
-  - name: update repo cache (Ubuntu)
+  - name: update repo cache (Debian)
     tags: always
     apt:
       update_cache: yes
     changed_when: false
-    when: ansible_distribution == "Ubuntu"
+    when: ansible_distribution == "Debain"
 
 
 - hosts: all
   become: true
   tasks:
 
-  - name: add ssh key for simone
+  - name: add ssh key for siblean
     tags: always
     authorized_key:
-      user: simone
-      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDDFKXMIafzQFacLs0RyQoeTvjFrtR4R2FIlOsvQXOfg ansible"
+      user: siblean
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIoO4bSiim0cogHGvSDo/9jOhme6ENwqpt+hfPvayHWW ansible"
 
 
 - hosts: workstations

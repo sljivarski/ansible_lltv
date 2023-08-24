@@ -11,35 +11,35 @@
       update_cache: yes
     when: ansible_distribution == "CentOS"
 
-  - name: install updates (Ubuntu)
+  - name: install updates (Debian)
     tags: always
     apt:
       upgrade: dist
       update_cache: yes
-    when: ansible_distribution == "Ubuntu"
+    when: ansible_distribution == "Debian"
 
 
 - hosts: all
   become: true
   tasks:
 
-  - name: create simone user
+  - name: create siblean user
     tags: always
     user:
-      name: simone
+      name: siblean
       groups: root
 
-  - name: add ssh key for simone
+  - name: add ssh key for siblean
     tags: always
     authorized_key:
-      user: simone
-      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDDFKXMIafzQFacLs0RyQoeTvjFrtR4R2FIlOsvQXOfg ansible"
+      user: siblean
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIoO4bSiim0cogHGvSDo/9jOhme6ENwqpt+hfPvayHWW ansible"
 
-  - name: add sudoers file for simone
+  - name: add sudoers file for siblean
     tags: always
     copy:
-      src: sudoer_simone
-      dest: /etc/sudoers.d/simone
+      src: sudoer_siblean
+      dest: /etc/sudoers.d/siblean
       owner: root
       group: root
       mode: 0440
